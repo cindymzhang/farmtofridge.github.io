@@ -1,0 +1,213 @@
+<!doctype html>
+
+<!-- This is a comment -->
+
+<!-- This link tag gets boostrap installed -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<!-- This links to the jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- This links to the google charts library  -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>ME216 Awesome Project Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Hello, world!</h1>
+          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+          
+
+		  <!-- ME216M - Here we place a div that we will later draw a chart into using google charts api -->
+		  <div id="curve_chart" style="width: 900px; height: 500px"></div>
+		
+		  <!-- ME216M - Here we place a div that we will later add more data to from adafruit.io -->
+          <div class="greeting-id"> 
+            <p class="greeting-content">The content is: </p>
+		  </div>
+		
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+
+
+
+	<div class="container">
+	
+	
+		<h2>Boom</h2>
+	
+		
+	
+	</div> <!-- /container -->
+
+
+	
+
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; ME216M 2018</p>
+    </footer>
+
+   
+    </body>
+</html>
+
+
+<!-- This is where you could write your Java Script with jQuerry to get data from adafruit.io -->
+
+<script>
+
+//This is a comment in Javascript - now the html comment tag <!-- --> does not work
+/* This is also a comment in Javascript */
+      
+      
+// $ is the way you use functions from jQuery
+//  $(document).ready(x) calls the function x when everything has loaded    
+$(document).ready(function() {
+
+	//This loads the google charts api library
+	google.charts.load('current', {'packages':['corechart']});
+	
+	//once you load google charts library call this will cause it to call the function getDataAndDrawChart
+	google.charts.setOnLoadCallback(getDataAndDrawChart);
+	
+	//here we define what we want the function getDataAndDrawChart to do - it will use jQuery's ajax (asynchronous javascript)
+	//to get data from adafruit.io's REST API and then use that data to draw a chart using google charts
+	function getDataAndDrawChart(){
+	
+		//this will make a HTTP GET request for the url given, and then call the function when it gets back data
+   		$.ajax({
+       		 url: "https://io.adafruit.com/api/v2/paricha_duang/feeds/roomtemp/data" //this gets all the data in a adafruit.io feed. make this your feed/data - make sure you make it public
+    	}).then(function(data) {
+    
+		   console.log(data.length); // this is how you log stuff to the console - use chrome or firefox to debug and view console
+	  
+		   var chartData = new Array(data.length + 1);  // this makes an array to stor your chart data in, have one more row than you have data for the labels
+		   chartData[0]= [ 'time', 'waterlevel'];  //these are the labels for your chart columns, this has two columns, but you could add more
+		   
+		   //This is a jQuery version of for each, a type of for loop - it will call the function for each element in the provided array (in this case data)
+		   $.each(data, function(index, element) { 
+		 
+				console.log(element.value); //in this case element is each data item you have in your adafruit.io feed. use element.x to get the value from the JSON key pair, ie element.value, element.created_epoch (which is time in unix since 1970)
+				
+				
+				// here we create a 1D array for each row of the data for the chart
+				chartData[index+1]= [parseInt(element.created_epoch), parseInt(element.value)]; //parseFloat() if you use a float
+			
+				// here we add a div to greeting-id in the html code above with the text from the json
+				$('.greeting-id').append($('<div>', {
+					text: element.value
+				})); 
+            
+         	});
+         	
+         	//Now we actually call a function we write that will actually draw the chart and send the array we formated
+        	drawChart(chartData);  
+   		 });
+    };
+    
+    //This function will actually draw a chart
+    function drawChart(dataIn) {
+    
+    	//need to take the array we made and turn it into a Google Charts Data Table
+        var data = google.visualization.arrayToDataTable(dataIn);
+		
+		//chart options
+        var options = {
+          title: 'Water Level',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+		// we create a chart and tell it where to draw it, (here the div curve_chart we created in the html
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+		
+		//here we actually draw the chart with the data we created
+        chart.draw(data, options);
+      }
+    
+});
+
+</script>
