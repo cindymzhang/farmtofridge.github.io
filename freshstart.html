@@ -1,0 +1,236 @@
+<!doctype html>
+
+<!-- This is a comment -->
+
+<!-- This link tag gets boostrap installed -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<!-- This links to the jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- This links to the google charts library  -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Fresh Start</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Fresh Start</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Fresh Start</h1>
+          <h3>Hello! Here is the information regarding your food:</h3>
+          
+		
+		  <!-- ME216M - Here we place a div that we will later add more data to from adafruit.io -->
+          <div class="temperature-data"> 
+            <p class="temperature">The content is:</p>
+		  </div>
+		  
+		  <div class="humidity-data">
+		  	<p class="humidity">The humidity is:</p>
+		  </div>
+		  
+		  <div class="weight-data">
+		  	<p class="weight">The weight is:</p>
+		  </div>
+        </div>
+      </div>
+
+	
+
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; ME216M 2018</p>
+    </footer>
+
+   
+    </body>
+</html>
+
+
+<!-- This is where you could write your Java Script with jQuerry to get data from adafruit.io -->
+
+<script>
+
+//This is a comment in Javascript - now the html comment tag <!-- --> does not work
+/* This is also a comment in Javascript */
+      
+      
+// $ is the way you use functions from jQuery
+//  $(document).ready(x) calls the function x when everything has loaded    
+$(document).ready(function() {
+
+	//This loads the google charts api library
+	google.charts.load('current', {'packages':['corechart']});
+	
+	//once you load google charts library call this will cause it to call the function getDataAndDrawChart
+	google.charts.setOnLoadCallback(getTemperature);
+	google.charts.setOnLoadCallback(getHumidity);
+	google.charts.setOnLoadCallback(getWeight);
+	
+	//here we define what we want the function getDataAndDrawChart to do - it will use jQuery's ajax (asynchronous javascript)
+	//to get data from adafruit.io's REST API and then use that data to draw a chart using google charts
+	function getTemperature(){
+	
+		//this will make a HTTP GET request for the url given, and then call the function when it gets back data
+   		$.ajax({
+       		 url: "https://io.adafruit.com/api/v2/paricha_duang/feeds/foodtempf/data" //this gets all the data in a adafruit.io feed. make this your feed/data - make sure you make it public
+    	}).then(function(data) {
+    
+		   
+		   var chartData = new Array(data.length + 1);  // this makes an array to stor your chart data in, have one more row than you have data for the labels
+		   chartData[0]= [ 'temp'];  //these are the labels for your chart columns, this has two columns, but you could add more
+		   
+		   
+		   
+		   //This is a jQuery version of for each, a type of for loop - it will call the function for each element in the provided array (in this case data)
+		   $.each(data, function(index, element) { 
+		 
+				//console.log(element.value); //in this case element is each data item you have in your adafruit.io feed. use element.x to get the value from the JSON key pair, ie element.value, element.created_epoch (which is time in unix since 1970)
+				
+				
+				// here we create a 1D array for each row of the data for the chart
+				chartData[index+1]= [parseInt(element.value)]; //parseFloat() if you use a float
+			
+// 				here we add a div to greeting-id in the html code above with the text from the json
+// 				$('.data-id').append($('<div>', {
+// 					text: element.value
+// 				})); 
+            
+         	});
+         	
+         	$('.temperature-data').append($('<div>', {
+         		text: chartData[1]
+         		}));
+         	
+   		 });
+    };
+    
+    function getHumidity(){
+	
+		//this will make a HTTP GET request for the url given, and then call the function when it gets back data
+   		$.ajax({
+       		 url: "https://io.adafruit.com/api/v2/paricha_duang/feeds/foodhumidity/data" //this gets all the data in a adafruit.io feed. make this your feed/data - make sure you make it public
+    	}).then(function(data) {
+    
+		   
+		   var chartData = new Array(data.length + 1);  // this makes an array to stor your chart data in, have one more row than you have data for the labels
+		   chartData[0]= ['humidity'];  //these are the labels for your chart columns, this has two columns, but you could add more
+		   
+		   
+		   
+		   //This is a jQuery version of for each, a type of for loop - it will call the function for each element in the provided array (in this case data)
+		   $.each(data, function(index, element) { 
+		 
+				//console.log(element.value); //in this case element is each data item you have in your adafruit.io feed. use element.x to get the value from the JSON key pair, ie element.value, element.created_epoch (which is time in unix since 1970)
+				
+				
+				// here we create a 1D array for each row of the data for the chart
+				chartData[index+1]= [parseInt(element.value)]; //parseFloat() if you use a float
+			
+// 				here we add a div to greeting-id in the html code above with the text from the json
+// 				$('.data-id').append($('<div>', {
+// 					text: element.value
+// 				})); 
+            
+         	});
+         	
+         	$('.humidity-data').append($('<div>', {
+         		text: chartData[1]
+         		}));
+         	
+   		 });
+    };
+    
+    function getWeight(){
+	
+		//this will make a HTTP GET request for the url given, and then call the function when it gets back data
+   		$.ajax({
+       		 url: "https://io.adafruit.com/api/v2/paricha_duang/feeds/foodweight/data" //this gets all the data in a adafruit.io feed. make this your feed/data - make sure you make it public
+    	}).then(function(data) {
+    
+		   
+		   var chartData = new Array(data.length + 1);  // this makes an array to stor your chart data in, have one more row than you have data for the labels
+		   chartData[0]= ['weight'];  //these are the labels for your chart columns, this has two columns, but you could add more
+		   
+		   
+		   
+		   //This is a jQuery version of for each, a type of for loop - it will call the function for each element in the provided array (in this case data)
+		   $.each(data, function(index, element) { 
+		 
+				//console.log(element.value); //in this case element is each data item you have in your adafruit.io feed. use element.x to get the value from the JSON key pair, ie element.value, element.created_epoch (which is time in unix since 1970)
+				
+				
+				// here we create a 1D array for each row of the data for the chart
+				chartData[index+1]= [parseInt(element.value)]; //parseFloat() if you use a float
+			
+// 				here we add a div to greeting-id in the html code above with the text from the json
+// 				$('.data-id').append($('<div>', {
+// 					text: element.value
+// 				})); 
+            
+         	});
+         	
+         	$('.weight-data').append($('<div>', {
+         		text: chartData[1]
+         		}));
+         	
+   		 });
+    };
+    
+});
+
+</script>
