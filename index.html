@@ -3,7 +3,7 @@
 <!-- This is a comment -->
 
 <!-- This link tag gets boostrap installed -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
 
 <!-- This links to the jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -20,12 +20,10 @@
     <link rel="icon" href="../../../../favicon.ico">
 
     <title>Fresh Start</title>
-
+	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,700|IBM+Plex+Serif:300,400,700|IBM+Plex+Mono:400,700" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
+    
   </head>
 
   <body>
@@ -69,21 +67,33 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Fresh Start</h1>
-          <h3>Hello! Here is the information regarding your food:</h3>
+          <h2 class="greeting">Hello! Here is the information regarding your food:</h3>
           
-		
-		  <!-- ME216M - Here we place a div that we will later add more data to from adafruit.io -->
-          <div class="temperature-data"> 
-            <p class="temperature">The content is:</p>
-		  </div>
-		  
-		  <div class="humidity-data">
-		  	<p class="humidity">The humidity is:</p>
-		  </div>
-		  
-		  <div class="weight-data">
-		  	<p class="weight">The weight is:</p>
-		  </div>
+        </div>
+        <div class="container">
+        	<div class="row">
+        		<div class="col-md-4">
+        			<div class="col-temperature">
+        				<div class="temperature-data"> 
+            				<h3 class="temperature-intro">Your temperature is</p>
+		  				</div>
+        			</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="col-humidity">
+        			    <div class="humidity-data"> 
+            				<h3 class="humidity-intro">Your humidity is</p>
+		  				</div>
+        			</div>
+        		</div>
+        		<div class="col-md-4">
+        			<div class="col-weight">
+        				<div class="weight-data"> 
+            				<h3 class="weight-intro">Your weight is</p>
+		  				</div>
+        			</div>
+        		</div>
+        	</div>
         </div>
       </div>
 
@@ -152,7 +162,7 @@ $(document).ready(function() {
             
          	});
          	
-         	$('.temperature-data').append($('<div>', {
+         	$('.temperature-data').append($('<h2>', {
          		text: chartData[1]
          		}));
          	
@@ -188,7 +198,7 @@ $(document).ready(function() {
             
          	});
          	
-         	$('.humidity-data').append($('<div>', {
+         	$('.humidity-data').append($('<h2>', {
          		text: chartData[1]
          		}));
          	
@@ -224,7 +234,7 @@ $(document).ready(function() {
             
          	});
          	
-         	$('.weight-data').append($('<div>', {
+         	$('.weight-data').append($('<h2>', {
          		text: chartData[1]
          		}));
          	
