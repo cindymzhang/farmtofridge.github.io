@@ -25,6 +25,7 @@ body {
 	font-family: IBM Plex Mono;
 	text-align: center;
 	padding-bottom: 1em;
+	margin-bottom: 2em;
 }
 
 .temperature-number h2, .humidity-number h2, .weight-number h2 {
@@ -42,7 +43,7 @@ h1.header-text {
 	padding-top: 4rem;
 }
 
-h2.greeting {
+h2.greeting, h3.greeting {
 	font-weight: lighter;
 }
 
@@ -69,4 +70,30 @@ h3.temperature-intro, h3.humidity-intro, h3.weight-intro {
 
 .header-image {
 	text-align: right;
+}
+
+.nav-link {
+	color: #333;
+}
+
+.footer-text {
+	font-family: IBM Plex Mono;
+}
+
+h3.warning-none {
+	font-family: IBM Plex Mono;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+h3.warning-high {
+	color: red;
+	font-family: IBM Plex Mono;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.more-info {
+	font-family: IBM Plex Mono;
+	text-align: justify;
 }
