@@ -10,7 +10,7 @@
 
 /* my edits */
 body {
-	font-family: "IBM Plex Serif";
+	font-family: "IBM Plex Sans";
 }
 
 .navbar {
@@ -25,7 +25,7 @@ body {
 	font-family: IBM Plex Mono;
 	text-align: center;
 	padding-bottom: 1em;
-	margin-bottom: 2em;
+	margin-bottom: 3rem;
 }
 
 .temperature-number h2, .humidity-number h2, .weight-number h2 {
@@ -38,9 +38,10 @@ h1.title {
 
 h1.header-text {
 	font-size: 4rem;
-	font-weight: bold;
 	line-height: 4rem;
 	padding-top: 4rem;
+	font-family: IBM Plex Sans;
+	font-weight: 300;
 }
 
 h2.greeting, h3.greeting {
@@ -63,7 +64,7 @@ h3.temperature-intro, h3.humidity-intro, h3.weight-intro {
 }
 
 .navbar-brand {
-	font-family: IBM Plex Serif;
+	font-family: IBM Plex Sans;
 	text-transform: none;
 	
 }
@@ -96,4 +97,8 @@ h3.warning-high {
 .more-info {
 	font-family: IBM Plex Mono;
 	text-align: justify;
+}
+
+.container {
+	margin-top: 1rem;
 }
