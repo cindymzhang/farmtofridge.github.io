@@ -104,7 +104,7 @@
             				<div class="weight-info">
             					<div class="weight-number">
             					</div>
-            					<p>UNITS</p>
+            					<p>GRAMS</p>
             				</div>
 		  				</div>
         			</div>
@@ -122,15 +122,15 @@
           <div class="row">
           	<div class="col-md-4">
           		<h3 class="warning-high">Temperature = HIGH</h3>
-          		<p class="more-info">Meat and dairy products should be stored at <strong>40˚ F or below</strong>. We recommend storing your <span class="foodchoice">raspberries</span> in a fridge.</p>
+          		<p class="more-info">Berries should be stored at <strong>40˚ F or below</strong>. We recommend storing your <span class="foodchoice">raspberries</span> in a fridge.</p>
           	</div>
           	<div class="col-md-4">
           		<h3 class="warning-high">Humidity = HIGH</h3>
           		<p class="more-info">The current humidity settings are too high! We recommend storing your food with 15% humidity levels or lower.</p>
           	</div>
           	<div class="col-md-4">
-          		<h3 class="warning-none">Time Left = 4 days</h3>
-          		<p class="more-info">Your <span class="foodchoice">raspberries</span> will last approximately <strong>4 more days</strong>. Please eat or freeze soon!</p>
+          		<h3 class="warning-none">Time Left = 2 days</h3>
+          		<p class="more-info">Your <span class="foodchoice">raspberries</span> will last approximately <strong>2 more days</strong>. Please eat or freeze soon!</p>
           	</div>
           </div>
         </div>
@@ -286,7 +286,7 @@ $(document).ready(function() {
          	});
          	
          	$('.weight-number').append($('<h2>', {
-         		text: chartData[1]
+         		text: parseInt(chartData[1]*3.3)
          		}));
          	
    		 });
