@@ -28,6 +28,14 @@ body {
 	margin-bottom: 3rem;
 }
 
+.hot {
+	background: linear-gradient(tomato, gold); 
+}
+
+.humid {
+	background: linear-gradient(dimgrey, lavender);
+}
+
 .temperature-number h2, .humidity-number h2, .weight-number h2 {
 	font-size: 8em;
 	font-weight: 700;

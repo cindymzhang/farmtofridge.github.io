@@ -67,7 +67,7 @@
         <div class="container">
           <div class="row">
 	          <div class="col-md-12">
-	          	<h2 class="greeting">Hello! Looks like you have a <span class="foodchoice">sandwich</span> in your fridge:</h2>
+	          	<h2 class="greeting">Hello! Looks like you have <span class="foodchoice">raspberries</span> in your fridge:</h2>
 	          </div>
           </div>
         </div>
@@ -116,13 +116,13 @@
         <div class="container">
           <div class="row">
 			<div class="col-md-12">
-				<h3 class="greeting">Here's some more information you should know about your <span class="foodchoice">sandwich</span>:</h3>
+				<h3 class="greeting">Here's some more information you should know about your <span class="foodchoice">raspberries</span>:</h3>
 			</div>
           </div>
           <div class="row">
           	<div class="col-md-4">
           		<h3 class="warning-high">Temperature = HIGH</h3>
-          		<p class="more-info">Meat and dairy products should be stored at <strong>40˚ F or below</strong>. We recommend storing your <span class="foodchoice">sandwich</span> in a fridge.</p>
+          		<p class="more-info">Meat and dairy products should be stored at <strong>40˚ F or below</strong>. We recommend storing your <span class="foodchoice">raspberries</span> in a fridge.</p>
           	</div>
           	<div class="col-md-4">
           		<h3 class="warning-high">Humidity = HIGH</h3>
@@ -130,7 +130,7 @@
           	</div>
           	<div class="col-md-4">
           		<h3 class="warning-none">Time Left = 4 days</h3>
-          		<p class="more-info">Your <span class="foodchoice">sandwich</span> will last approximately <strong>4 more days</strong>. Please eat or freeze soon!</p>
+          		<p class="more-info">Your <span class="foodchoice">raspberries</span> will last approximately <strong>4 more days</strong>. Please eat or freeze soon!</p>
           	</div>
           </div>
         </div>
@@ -170,6 +170,8 @@ $(document).ready(function() {
 	google.charts.setOnLoadCallback(getHumidity);
 	google.charts.setOnLoadCallback(getWeight);
 	
+	
+	
 	//here we define what we want the function getDataAndDrawChart to do - it will use jQuery's ajax (asynchronous javascript)
 	//to get data from adafruit.io's REST API and then use that data to draw a chart using google charts
 	function getTemperature(){
@@ -204,6 +206,12 @@ $(document).ready(function() {
          	$('.temperature-number').append($('<h2>', {
          		text: chartData[1]
          		}));
+         	$('.temperature-number h2').filter(function(index){
+    			return parseInt(this.innerHTML) > 55;
+			}).css({'background':'linear-gradient(red, #1b1b1b)'});
+			$('.temperature-number h2').filter(function(index){
+    			return parseInt(this.innerHTML) < 0;
+			}).css({'background':'linear-gradient(#B0C4DE, #1b1b1b)'});
          	
    		 });
     };
@@ -240,6 +248,10 @@ $(document).ready(function() {
          	$('.humidity-number').append($('<h2>', {
          		text: chartData[1]
          		}));
+         	$('.humidity-number h2').filter(function(index){
+    			return parseInt(this.innerHTML) > 15;
+			}).css({'background':'linear-gradient(red, #1b1b1b)'});
+			
          	
    		 });
     };
